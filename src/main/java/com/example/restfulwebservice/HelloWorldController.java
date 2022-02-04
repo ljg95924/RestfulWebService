@@ -9,7 +9,13 @@ public class HelloWorldController {
     // /hello-world(endpoint)
     // @RequestMapping(method=RequestMethod.GET, path="/hello-world")
     @GetMapping(path = "/hello-world")
-    public String helloWorld(){
+    public String helloWorld() {
         return "Hello World";
+    }
+
+    // alt + enter
+    @GetMapping(path = "/hello-world-bean")
+    public HelloWorldBean helloworldBean() {
+        return new HelloWorldBean("Hello World");
     }
 }
