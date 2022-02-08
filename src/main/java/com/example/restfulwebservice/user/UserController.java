@@ -23,7 +23,11 @@ public class UserController {
     // GET /user/1 or/user/10 -> 1이나 10 등 문자열로 전달됨
     @GetMapping("/users/{id}")
     public User retrieveUser(@PathVariable int id) {
-        return service.findOne(id);
+        User user = service.findOne(id);
+        if (user == null) {
+            throw new UserNotFoundException(String.format("ID[%s] not found", id));
+        }
+        return user;
     }
 
     @PostMapping("/users") //Post로 처리
