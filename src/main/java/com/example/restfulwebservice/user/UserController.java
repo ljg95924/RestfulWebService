@@ -18,7 +18,7 @@ public class UserController {
 
     @GetMapping("/users") //Get으로 처리
     public List<User> retrieveAllUsers() {
-        return service.findeALl();
+        return service.findALl();
     }
 
     // GET /user/1 or/user/10 -> 1이나 10 등 문자열로 전달됨
