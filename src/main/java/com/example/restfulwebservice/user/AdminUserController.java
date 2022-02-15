@@ -22,8 +22,16 @@ public class AdminUserController {
     }
 
     @GetMapping("/users") //Get으로 처리
-    public List<User> retrieveAllUsers() {
-        return service.findALl();
+    public MappingJacksonValue retrieveAllUsers() {
+        List<User> users = service.findALl();
+
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("id", "name", "joinDate", "password");
+        FilterProvider filters = new SimpleFilterProvider().addFilter("UserInfo", filter);
+
+        MappingJacksonValue mapping = new MappingJacksonValue(users);
+        mapping.setFilters(filters);
+
+        return mapping;
     }
 
     // GET /user/1 or/user/10 -> 1이나 10 등 문자열로 전달됨
@@ -33,8 +41,8 @@ public class AdminUserController {
         if (user == null) {
             throw new UserNotFoundException(String.format("ID[%s] not found", id));
         }
-        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("id","name","password","ssn");
-        FilterProvider filters = new SimpleFilterProvider().addFilter("UserInfo",filter);
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("id", "name", "password", "ssn");
+        FilterProvider filters = new SimpleFilterProvider().addFilter("UserInfo", filter);
 
         MappingJacksonValue mapping = new MappingJacksonValue(user);
         mapping.setFilters(filters);
