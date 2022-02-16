@@ -1,6 +1,5 @@
 package com.example.restfulwebservice.helloworld;
 
-import com.example.restfulwebservice.helloworld.HelloWorldBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +37,6 @@ public class HelloWorldController {
 
     @GetMapping(path = "/hello-world-internationalized")
     public String helloWorldInternationalized(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
-        return messageSource.getMessage("greeting.message",null,locale);
+        return messageSource.getMessage("greeting.message", null, locale);
     }
 }

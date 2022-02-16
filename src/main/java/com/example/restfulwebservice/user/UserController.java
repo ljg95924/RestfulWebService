@@ -44,6 +44,7 @@ public class UserController {
         entityModel.add(linkTo.withRel("all-users"));
         return ResponseEntity.ok(entityModel);
     }
+
     // 전체 사용자 목록
     @GetMapping("/users2")
     public ResponseEntity<CollectionModel<EntityModel<User>>> retrieveUserList2() {

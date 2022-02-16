@@ -5,7 +5,10 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.converter.json.MappingJacksonValue;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -35,7 +38,7 @@ public class AdminUserController {
     // @GetMapping("/v1/users/{id}")
     // @GetMapping(value = "/users/{id}/", params = "version=1") //Request Parameter로 버전 관리
     // @GetMapping(value = "/users/{id}", headers = "X-API-VERSION=1") // Header 로 버전 관리
-    @GetMapping(value = "/users/{id}",produces = "application/vnd.company.appv1+json") // Produce로 관리 (Header를 통해)
+    @GetMapping(value = "/users/{id}", produces = "application/vnd.company.appv1+json") // Produce로 관리 (Header를 통해)
     public MappingJacksonValue retrieveUserV1(@PathVariable int id) {
         User user = service.findOne(id);
         if (user == null) {
@@ -53,7 +56,7 @@ public class AdminUserController {
     // @GetMapping("/v2/users/{id}")
     // @GetMapping(value = "/users/{id}/",params = "version=2") //Request Parameter로 버전 관리
     // @GetMapping(value = "/users/{id}", headers = "X-API-VERSION=2") // Header 로 버전 관리
-    @GetMapping(value = "/users/{id}",produces = "application/vnd.company.appv2+json") // produce로 관리 (Header를 통해)
+    @GetMapping(value = "/users/{id}", produces = "application/vnd.company.appv2+json") // produce로 관리 (Header를 통해)
     public MappingJacksonValue retrieveUserV2(@PathVariable int id) {
         User user = service.findOne(id);
         if (user == null) {

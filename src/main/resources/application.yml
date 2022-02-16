@@ -8,3 +8,7 @@ logging:
 Spring:
   messages:
     basename: messages
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
