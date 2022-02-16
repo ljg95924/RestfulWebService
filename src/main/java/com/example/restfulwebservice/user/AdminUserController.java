@@ -3,15 +3,10 @@ package com.example.restfulwebservice.user;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.fasterxml.jackson.databind.util.BeanUtil;
 import org.springframework.beans.BeanUtils;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -25,7 +20,7 @@ public class AdminUserController {
 
     @GetMapping("/users") //Get으로 처리
     public MappingJacksonValue retrieveAllUsers() {
-        List<User> users = service.findALl();
+        List<User> users = service.findAll();
 
         SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("id", "name", "joinDate", "password");
         FilterProvider filters = new SimpleFilterProvider().addFilter("UserInfo", filter);

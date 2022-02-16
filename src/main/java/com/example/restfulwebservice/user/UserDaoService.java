@@ -19,7 +19,7 @@ public class UserDaoService {
         users.add(new User(3, "Elena", new Date(),"pass3","3000000-3111111"));
     }
 
-    public List<User> findALl() {
+    public List<User> findAll() {
         return users;
     }
 
