@@ -8,11 +8,20 @@ logging:
 Spring:
   messages:
     basename: messages
-spring:
+  security:
+    user:
+      name: username
+      password: passw0rd
   mvc:
-    pathmatch:
+    path match:
       matching-strategy: ant_path_matcher
-
+  datasource:
+    url: jdbc:h2:mem:testdb
+  jpa:
+    show-sql:true
+  h2:
+    console:
+      enabled: true
 management:
   endpoints:
     web:

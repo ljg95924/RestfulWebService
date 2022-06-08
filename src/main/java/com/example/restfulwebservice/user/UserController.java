@@ -37,9 +37,9 @@ public class UserController {
             throw new UserNotFoundException(String.format("ID[%s] not found", id));
         }
 
-        // HATEOS
+        // HATEOS -> RestAPI를 사용할때 좋은 라이브러리
         EntityModel entityModel = EntityModel.of(user);
-
+        // retrieveAllUsers 메소드를 link 시켜 전체사용자조회로 돌아갈 수 있음.
         WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).retrieveAllUsers());
         entityModel.add(linkTo.withRel("all-users"));
         return ResponseEntity.ok(entityModel);
