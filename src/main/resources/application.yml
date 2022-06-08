@@ -8,9 +8,12 @@ logging:
 Spring:
   messages:
     basename: messages
-spring:
+  security:
+    user:
+      name: username
+      password: passw0rd
   mvc:
-    pathmatch:
+    path match:
       matching-strategy: ant_path_matcher
 
 management:
