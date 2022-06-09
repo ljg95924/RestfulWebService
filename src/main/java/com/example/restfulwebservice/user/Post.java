@@ -1,5 +1,6 @@
 package com.example.restfulwebservice.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,5 +22,6 @@ public class Post {
     // User : Post -> 1 : (0 ~ N), Main : Sub -> Parent : Child
     @ManyToOne(fetch = FetchType.LAZY) // LAZY : 지연로딩방식
     @JsonIgnore
+    @JsonBackReference
     private User user;
 }

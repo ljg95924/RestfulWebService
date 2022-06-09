@@ -1,5 +1,6 @@
 package com.example.restfulwebservice.user;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -41,6 +42,7 @@ public class User {
     @ApiModelProperty(notes = "사용자 주민번호를 입력해 주세요.")
     private String ssn;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user") // user 테이블과 매핑
     private List<Post> posts;
 
